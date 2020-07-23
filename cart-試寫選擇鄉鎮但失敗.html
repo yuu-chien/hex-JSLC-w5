@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>試寫選擇鄉鎮但失敗</title>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <form>
+            <validation-provider rules="required" v-slot="{ errors }">
+                <label for="recipient_name">收件姓名</label>
+                <input type="text" id="recipient_name" name="" class="form-control" v-model="recipient_name">
+                <span>{{ errors[0] }}</span>
+            </validation-provider>
+
+            <validation-provider rules="numeric|length:8|is:09|required" v-slot="{ errors }">
+                <label for="recipient_phone">手機號碼</label>
+                <input type="tel" id="recipient_phone" name="" class="form-control" v-model="recipient_phone">
+                <span>{{ errors[0] }}</span>
+            </validation-provider>
+
+            <validation-provider rules="email|required" rules="email" v-slot="{ errors }">
+                <label for="recipient_email">電子信箱</label>
+                <input type="email" id="recipient_email" class="form-control" v-model="recipient_email">
+                <span>{{ errors[0] }}</span>
+            </validation-provider>
+
+            <validation-provider rules="">
+                <label for="recipient_address">收件地址</label>
+                <input type="text" class="form-control mb-3" placeholder="縣市">
+                <input type="text" class="form-control mb-3" placeholder="鄉鎮">
+                <input type="text" id="recipient_address" name="" class="form-control" v-model="recipient_address">
+                <span></span>
+            </validation-provider>
+
+            
+            <country-option></country-option>
+            
+
+            <validation-provider rules="oneOf:payment_web_atm,payment_credit_card,payment_convenience,payment_after_cash,payment_apple_pay,payment_google_pay|required" v-slot="{ errors }">
+                <label for="payment">付款方式</label>
+                <select name="" id="payment" v-model="payment" class="form-control">
+                    <option value="payment_web_atm">網路銀行轉帳</option>
+                    <option value="payment_convenience">超商條碼繳費</option>
+                    <option value="payment_credit_card" selected>線上信用卡刷卡</option>
+                    <option value="payment_after_cash">貨到付款</option>
+                    <option value="payment_apple_pay">ApplePay</option>
+                    <option value="payment_google_pay">GooglePay</option>
+                </select>
+                <span>{{ errors[0] }}</span>
+            </validation-provider>
+
+            <validation-provider>
+                <label for="">留言給我們</label>
+                <textarea type="text" class="form-control"></textarea>
+            </validation-provider>
+        </form>
+    </div>
+</div>
+
+</body>
+<!-- Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- axios -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<!-- veeValidate -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vee-validate/3.3.0/vee-validate.full.min.js"></script>
+<!-- vue-loading-overlay -->
+<script src="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.css">
+
+
+<script type="text/x-template" id="option">
+    <select name="" id="" @click="thisC">
+        <option value="基隆市" ref="c">基隆市</option>
+        <option value="臺北市" ref="c">臺北市</option>
+        <option value="新北市">新北市</option>
+        <option value="宜蘭縣">宜蘭縣</option>
+        <option value="新竹市">新竹市</option>
+        <option value="桃園市">桃園市</option>
+        <option value="苗栗縣">苗栗縣</option>
+    </select>
+    <!-- "基隆市", "臺北市", "新北市", "宜蘭縣", "新竹市", "新竹縣", "桃園市", "苗栗縣", "臺中市", "彰化縣", "南投縣", "嘉義市", "嘉義縣", "雲林縣", "臺南市", "高雄市", "屏東縣", "臺東縣", "花蓮縣", "金門縣", "連江縣", "澎湖縣" -->
+</script>
+
+
+
+<script type="module">
+
+    Vue.component('ValidationProvider', VeeValidate.ValidationProvider);
+    
+    import zh_TW from './zh_TW.js';
+    VeeValidate.localize('tw', zh_TW);
+    import TW_zipCode from './TW_zipCode.js';
+    console.log("TW_zipCode",TW_zipCode);
+
+    Vue.component('country-option', {
+        props: ['country'],
+        template: '#option',
+        methods: {
+            thisC() {
+                
+                console.log("hihihi",this.$refs.c)
+            },
+        }
+    })
+
+    //  v-for="(c, index) in county" :key="index" :value="c"
+
+
+    new Vue({
+        el: '#app',
+        data: {
+            recipient_name: '',
+            recipient_phone: '',
+            recipient_email: '',
+            recipient_address: '',
+            payment: '',
+            county: Object.keys(TW_zipCode),
+            countyName: '',
+        },
+        
+        methods: {
+            getCountry() {
+                console.log("this.county", this.county);
+            },
+            getDistrict() {
+                console.log("123")
+            }
+        },
+        created() {
+            this.getCountry()
+        },
+    });
+</script>
+</html>

@@ -11,55 +11,62 @@
     <div class="container">
         <form>
             <validation-provider rules="required" v-slot="{ errors }">
-                <label for="recipient_name">收件姓名</label>
-                <input type="text" id="recipient_name" name="" class="form-control" v-model="recipient_name">
-                <span>{{ errors[0] }}</span>
+                <div class="d-flex flex-column">
+                    <label for="recipient_name">收件姓名</label>
+                    <input type="text" id="recipient_name" name="" class="form-control" v-model="recipient_name">
+                    <span>{{ errors[0] }}</span>
+                </div>
             </validation-provider>
 
             <validation-provider rules="numeric|length:8|is:09|required" v-slot="{ errors }">
-                <label for="recipient_phone">手機號碼</label>
-                <input type="tel" id="recipient_phone" name="" class="form-control" v-model="recipient_phone">
-                <span>{{ errors[0] }}</span>
+                <div class="d-flex flex-column">
+                    <label for="recipient_phone">手機號碼</label>
+                    <input type="tel" id="recipient_phone" name="" class="form-control" v-model="recipient_phone">
+                    <span>{{ errors[0] }}</span>
+                </div>
             </validation-provider>
 
             <validation-provider rules="email|required" rules="email" v-slot="{ errors }">
-                <label for="recipient_email">電子信箱</label>
-                <input type="email" id="recipient_email" class="form-control" v-model="recipient_email">
-                <span>{{ errors[0] }}</span>
+                <div class="d-flex flex-column">
+                    <label for="recipient_email">電子信箱</label>
+                    <input type="email" id="recipient_email" class="form-control" v-model="recipient_email">
+                    <span>{{ errors[0] }}</span>
+                </div>
             </validation-provider>
 
-            <validation-provider rules="min:4|required" v-slot="{ errors }">
-                <label for="recipient_address">收件地址</label>
-                <input type="text" id="recipient_address" name="" class="form-control" v-model="recipient_address">
-                <span>{{ errors[0] }}</span>
+            <validation-provider rules="">
+                <div class="d-flex flex-column">
+                    <label for="recipient_address">收件地址</label>
+                    <input type="text" id="recipient_address" name="" class="form-control" v-model="recipient_address">
+                    <span></span>
+                </div>
             </validation-provider>
 
             <validation-provider rules="oneOf:payment_web_atm,payment_credit_card,payment_convenience,payment_after_cash,payment_apple_pay,payment_google_pay|required" v-slot="{ errors }">
-                <label for="payment">付款方式</label>
-                <select name="" id="payment" v-model="payment" class="form-control">
-                    <option value="payment_web_atm">網路銀行轉帳</option>
-                    <option value="payment_convenience">超商條碼繳費</option>
-                    <option value="payment_credit_card" selected>線上信用卡刷卡</option>
-                    <option value="payment_after_cash">貨到付款</option>
-                    <option value="payment_apple_pay">ApplePay</option>
-                    <option value="payment_google_pay">GooglePay</option>
-                </select>
-                <span>{{ errors[0] }}</span>
+                <div class="d-flex flex-column">
+                    <label for="payment">付款方式</label>
+                    <select name="" id="payment" v-model="payment" class="form-control">
+                        <option value="payment_web_atm">網路銀行轉帳</option>
+                        <option value="payment_convenience">超商條碼繳費</option>
+                        <option value="payment_credit_card" selected>線上信用卡刷卡</option>
+                        <option value="payment_after_cash">貨到付款</option>
+                        <option value="payment_apple_pay">ApplePay</option>
+                        <option value="payment_google_pay">GooglePay</option>
+                    </select>
+                    <span>{{ errors[0] }}</span>
+                </div>
             </validation-provider>
 
             <validation-provider>
-                <label for="">留言給我們</label>
-                <textarea type="text" class="form-control"></textarea>
+                <div class="d-flex flex-column">
+                    <label for="">留言給我們</label>
+                    <textarea type="text" class="form-control"></textarea>
+                </div>
             </validation-provider>
         </form>
     </div>
 </div>
-<!-- 姓名：必填
-Email：須符合格式
-電話：必填，超過 8 碼，input type 為 tel
-地址：必填
-付款方式：WebATM、ATM、Barcode、Credit、ApplePay、GooglePay
-留言：非必填 -->
+
 </body>
 <!-- Vue -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -75,12 +82,18 @@ Email：須符合格式
 <script src="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.css">
 
+
+
+
+
+
 <script type="module">
 
     Vue.component('ValidationProvider', VeeValidate.ValidationProvider);
     
     import zh_TW from './zh_TW.js';
     VeeValidate.localize('tw', zh_TW);
+
 
     new Vue({
         el: '#app',
@@ -90,6 +103,13 @@ Email：須符合格式
             recipient_email: '',
             recipient_address: '',
             payment: '',
+        },
+        
+        methods: {
+
+        },
+        created() {
+            
         },
     });
 </script>
