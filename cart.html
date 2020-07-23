@@ -4,66 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/cart.min.css">
     <title>Document</title>
 </head>
 <body>
 <div id="app">
-    <div class="container">
-        <form>
-            <validation-provider rules="required" v-slot="{ errors }">
-                <div class="d-flex flex-column">
-                    <label for="recipient_name">收件姓名</label>
-                    <input type="text" id="recipient_name" name="" class="form-control" v-model="recipient_name">
-                    <span>{{ errors[0] }}</span>
-                </div>
-            </validation-provider>
-
-            <validation-provider rules="numeric|length:8|is:09|required" v-slot="{ errors }">
-                <div class="d-flex flex-column">
-                    <label for="recipient_phone">手機號碼</label>
-                    <input type="tel" id="recipient_phone" name="" class="form-control" v-model="recipient_phone">
-                    <span>{{ errors[0] }}</span>
-                </div>
-            </validation-provider>
-
-            <validation-provider rules="email|required" rules="email" v-slot="{ errors }">
-                <div class="d-flex flex-column">
-                    <label for="recipient_email">電子信箱</label>
-                    <input type="email" id="recipient_email" class="form-control" v-model="recipient_email">
-                    <span>{{ errors[0] }}</span>
-                </div>
-            </validation-provider>
-
-            <validation-provider rules="">
-                <div class="d-flex flex-column">
-                    <label for="recipient_address">收件地址</label>
-                    <input type="text" id="recipient_address" name="" class="form-control" v-model="recipient_address">
-                    <span></span>
-                </div>
-            </validation-provider>
-
-            <validation-provider rules="oneOf:payment_web_atm,payment_credit_card,payment_convenience,payment_after_cash,payment_apple_pay,payment_google_pay|required" v-slot="{ errors }">
-                <div class="d-flex flex-column">
-                    <label for="payment">付款方式</label>
-                    <select name="" id="payment" v-model="payment" class="form-control">
-                        <option value="payment_web_atm">網路銀行轉帳</option>
-                        <option value="payment_convenience">超商條碼繳費</option>
-                        <option value="payment_credit_card" selected>線上信用卡刷卡</option>
-                        <option value="payment_after_cash">貨到付款</option>
-                        <option value="payment_apple_pay">ApplePay</option>
-                        <option value="payment_google_pay">GooglePay</option>
-                    </select>
-                    <span>{{ errors[0] }}</span>
-                </div>
-            </validation-provider>
-
-            <validation-provider>
-                <div class="d-flex flex-column">
-                    <label for="">留言給我們</label>
-                    <textarea type="text" class="form-control"></textarea>
-                </div>
-            </validation-provider>
-        </form>
+    <div class="container" class="">
+        <div class="row">
+            <div class="d-flex _c_cart_wrap">
+                <section class="col-4">
+                    <form>
+                        <validation-provider rules="required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_name">收件姓名</label>
+                                <input type="text" id="recipient_name" name="" class="form-control" v-model="recipient_name">
+                                <span>{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="numeric|length:8|is:09|required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_phone">手機號碼</label>
+                                <input type="tel" id="recipient_phone" name="" class="form-control" v-model="recipient_phone">
+                                <span>{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="email|required" rules="email" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_email">電子信箱</label>
+                                <input type="email" id="recipient_email" class="form-control" v-model="recipient_email">
+                                <span>{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_address">收件地址</label>
+                                <input type="text" id="recipient_address" name="" class="form-control" v-model="recipient_address">
+                                <span></span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="oneOf:payment_web_atm,payment_credit_card,payment_convenience,payment_after_cash,payment_apple_pay,payment_google_pay|required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="payment">付款方式</label>
+                                <select name="" id="payment" v-model="payment" class="form-control">
+                                    <option value="payment_web_atm">網路銀行轉帳</option>
+                                    <option value="payment_convenience">超商條碼繳費</option>
+                                    <option value="payment_credit_card" selected>線上信用卡刷卡</option>
+                                    <option value="payment_after_cash">貨到付款</option>
+                                    <option value="payment_apple_pay">ApplePay</option>
+                                    <option value="payment_google_pay">GooglePay</option>
+                                </select>
+                                <span>{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider>
+                            <div class="d-flex flex-column">
+                                <label for="">留言給我們</label>
+                                <textarea type="text" class="form-control"></textarea>
+                            </div>
+                        </validation-provider>
+                    </form>
+                </section>
+                <section class="col-8">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">商品資訊</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">價格</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="d-flex">
+                                <div class="_c_cart_p_img">
+                                    <img src="https://images.unsplash.com/photo-1595353798698-b0cd03174152?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=335&q=80" alt="">
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Lorem ipsum dolor sit amet.</li>
+                                        <li>SIZE <span>L</span></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="number">
+                            </td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">TOTAL</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </section>
+            </div>
+        </div>
     </div>
 </div>
 

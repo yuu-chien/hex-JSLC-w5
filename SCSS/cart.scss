@@ -1,0 +1,39 @@
+@import './base/reset';
+@import './base/base';
+
+@import './utils/variables';
+@import './utils/utilities';
+
+@import './components/input';
+
+// *{
+//     outline: 1px solid olive;
+// }
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: $color-tertiary;
+}
+
+._c_cart_wrap {
+    padding: 36px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 2px -2px 2px -2px 2px #ccc;
+}
+
+
+._c_cart_p_img {
+    width: 40%;
+    height: 120px;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,15 @@
+.form-control{
+    padding: 8px;
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid $color-primary;
+    border-radius: unset;
+    background: none;
+}
+
+.form-control:focus, .form-control:active {
+    outline-width: 0 !important;
+    outline: none !important;
+    border-bottom: 1.5px solid #44889b;
+    box-shadow: none;
+}
