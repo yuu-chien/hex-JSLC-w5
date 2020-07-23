@@ -9,67 +9,11 @@
 </head>
 <body>
 <div id="app">
-    <div class="container" class="">
+    <div class="container">
         <div class="row">
             <div class="d-flex _c_cart_wrap">
-                <section class="col-4">
-                    <form>
-                        <validation-provider rules="required" v-slot="{ errors }">
-                            <div class="d-flex flex-column">
-                                <label for="recipient_name" class="mb-mini">收件姓名</label>
-                                <input type="text" id="recipient_name" name="" class="form-control" v-model="recipient_name">
-                                <span class="point_txt">{{ errors[0] }}</span>
-                            </div>
-                        </validation-provider>
-            
-                        <validation-provider rules="numeric|length:10|is:09|required" v-slot="{ errors }">
-                            <div class="d-flex flex-column">
-                                <label for="recipient_phone" class="mb-mini">手機號碼</label>
-                                <input type="tel" id="recipient_phone" name="" class="form-control" v-model="recipient_phone">
-                                <span class="point_txt">{{ errors[0] }}</span>
-                            </div>
-                        </validation-provider>
-            
-                        <validation-provider rules="email|required" rules="email" v-slot="{ errors }">
-                            <div class="d-flex flex-column">
-                                <label for="recipient_email" class="mb-mini">電子信箱</label>
-                                <input type="email" id="recipient_email" class="form-control" v-model="recipient_email">
-                                <span class="point_txt">{{ errors[0] }}</span>
-                            </div>
-                        </validation-provider>
-            
-                        <validation-provider rules="">
-                            <div class="d-flex flex-column">
-                                <label for="recipient_address" class="mb-mini">收件地址</label>
-                                <input type="text" id="recipient_address" name="" class="form-control" v-model="recipient_address">
-                                <span class="point_txt"></span>
-                            </div>
-                        </validation-provider>
-            
-                        <validation-provider rules="oneOf:payment_web_atm,payment_credit_card,payment_convenience,payment_after_cash,payment_apple_pay,payment_google_pay|required" v-slot="{ errors }">
-                            <div class="d-flex flex-column">
-                                <label for="payment" class="mb-mini">付款方式</label>
-                                <select name="" id="payment" v-model="payment" class="form-control">
-                                    <option value="payment_web_atm">網路銀行轉帳</option>
-                                    <option value="payment_convenience">超商條碼繳費</option>
-                                    <option value="payment_credit_card" selected>線上信用卡刷卡</option>
-                                    <option value="payment_after_cash">貨到付款</option>
-                                    <option value="payment_apple_pay">ApplePay</option>
-                                    <option value="payment_google_pay">GooglePay</option>
-                                </select>
-                                <span class="point_txt">{{ errors[0] }}</span>
-                            </div>
-                        </validation-provider>
-            
-                        <validation-provider>
-                            <div class="d-flex flex-column">
-                                <label for="" class="mb-mini">留言給我們</label>
-                                <textarea type="text" class="form-control"></textarea>
-                            </div>
-                        </validation-provider>
-                    </form>
-                </section>
-                <section class="col-8">
+                <!-- 商品資訊 -->
+                <section class="col-8 pr-sm">
                     <table class="table">
                         <thead>
                           <tr>
@@ -113,6 +57,64 @@
                           </tr>
                         </tbody>
                       </table>
+                </section>
+                <!-- 收件資訊 -->
+                <section class="col-4">
+                    <form>
+                        <validation-provider rules="required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_name" class="mb-mini">收件姓名</label>
+                                <input type="text" id="recipient_name" name="收件姓名" class="form-control" v-model="recipient_name">
+                                <span class="point_txt">{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="numeric|length:10|is:09|required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_phone" class="mb-mini">手機號碼</label>
+                                <input type="tel" id="recipient_phone" name="手機號碼" class="form-control" v-model="recipient_phone">
+                                <span class="point_txt">{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="email|required" rules="email" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_email" class="mb-mini">電子信箱</label>
+                                <input type="email" id="recipient_email" name="電子信箱" class="form-control" v-model="recipient_email">
+                                <span class="point_txt">{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="recipient_address" class="mb-mini">收件地址</label>
+                                <input type="text" id="recipient_address" name="收件地址" class="form-control" v-model="recipient_address">
+                                <span class="point_txt">{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider rules="oneOf:payment_web_atm,payment_credit_card,payment_convenience,payment_after_cash,payment_apple_pay,payment_google_pay|required" v-slot="{ errors }">
+                            <div class="d-flex flex-column">
+                                <label for="payment" class="mb-mini">付款方式</label>
+                                <select name="" id="payment" v-model="payment" class="form-control" name="付款方式">
+                                    <option value="payment_web_atm">網路銀行轉帳</option>
+                                    <option value="payment_convenience">超商條碼繳費</option>
+                                    <option value="payment_credit_card" selected>線上信用卡刷卡</option>
+                                    <option value="payment_after_cash">貨到付款</option>
+                                    <option value="payment_apple_pay">ApplePay</option>
+                                    <option value="payment_google_pay">GooglePay</option>
+                                </select>
+                                <span class="point_txt">{{ errors[0] }}</span>
+                            </div>
+                        </validation-provider>
+            
+                        <validation-provider>
+                            <div class="d-flex flex-column">
+                                <label for="" class="mb-mini">留言給我們</label>
+                                <textarea type="text" class="form-control"></textarea>
+                            </div>
+                        </validation-provider>
+                    </form>
                 </section>
             </div>
         </div>
