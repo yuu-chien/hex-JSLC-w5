@@ -20,10 +20,10 @@ export default {
       "max_value": "{_field_} 不得大於 {max}",
       "mimes": "{_field_} 需為有效的檔案類型",
       "min": "{_field_} 不能小於 {length} 個字元",
-      "min_value": "{_field_} 不得小於 {min}",
+      "min_value": "{_field_}不得小於 {min}",
       "numeric": "{_field_} 需為數字",
       "regex": "{_field_} 的格式錯誤",
-      "required": "請填寫 {_field_}",
+      "required": "請填寫{_field_}",
       "required_if": "{_field_} 為必填",
       "size": "{_field_} 的檔案需小於 {size}KB"
     }
