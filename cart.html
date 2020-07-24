@@ -43,8 +43,9 @@
                                 </validation-provider>
                             </td>
                             <td>
-                                <div class="d-flex jc-center ai-center">
+                                <div class="d-flex flex-d-col jc-center ai-center">
                                     <p class="_c_cart_p_num ta-center">{{ cart_p_price }}</p>
+                                    <span class="point_txt"></span>
                                 </div>
                             </td>
                           </tr>
@@ -53,7 +54,7 @@
                                 <p class="fw-bold ta-right">TOTAL</p>
                             </td>
                             <td>
-                                <p class="fw-bold ta-right color-primary">{{ cart_p_price*cart_p_num | total }}</p>
+                                <p class="fw-bold ta-right color-primary fz-sm">{{ cart_p_price*cart_p_num | total }}</p>
                             </td>
                           </tr>
                         </tbody>

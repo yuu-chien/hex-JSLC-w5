@@ -19,6 +19,9 @@
     background-image: url(../img/pattern_5.png);
     background-size: cover;
 }
+.table td, .table th {
+    vertical-align: middle !important;
+}
 
 ._c_cart_wrap {
     width: 100%;
