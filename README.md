@@ -30,3 +30,17 @@
 <br>
 
 ## 助教 Feedback
+作業練習的不錯，購物車版型自行設計，很棒喔~
+- VeeValidate 元件有正確註冊了，運作上沒有問題。
+- 有看同學跟者老師的影片新增了 filter 功能，非常不錯呢。
+
+助教這邊提醒一下:  
+手機號碼 rules 有看同學嘗試使用 is:09 這個功能，  
+不過 VeeValidate 官方文件有提到， is 使用的是嚴格判斷式  
+必須值和設定的完全一致才會通過，is 的 TIP 框框，有相關說明  
+如果是想要部分字串就能通行，可以參考 [Rules Object Expression](https://logaretm.github.io/vee-validate/advanced/rules-object-expression.html#defining-rules) 這部分的文件  
+
+另外鄉鎮選單，一般來說我們會使用雙層的 select 去製作  
+這邊附上相關範例:原生 [JS 雙層選單](https://codepen.io/Isshin/pen/VwvNREW)、[Vue 雙層選單](https://codepen.io/g901612002/pen/ZxpvLZ)  
+
+恭喜你完成這個章節，也期待你後續的作業哩 :D  
