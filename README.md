@@ -1,5 +1,5 @@
 # hex-JSLC-w5
-六角 JS 作品實戰班｜第五週．表單驗證  
+2020 夏季．六角 JS 作品實戰班｜第五週．表單驗證  
 [DEMO](https://yuu-chien.github.io/hex-JSLC-w5/cart.html)
 
 <br>
